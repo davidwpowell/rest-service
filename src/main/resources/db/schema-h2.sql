@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS sample;
+
+CREATE TABLE IF NOT EXISTS sample (
+    id      INTEGER PRIMARY KEY,
+    text    VARCHAR(64)
+);
