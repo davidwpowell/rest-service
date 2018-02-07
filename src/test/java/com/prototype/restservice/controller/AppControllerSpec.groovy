@@ -4,6 +4,7 @@ import com.prototype.restservice.model.SampleDto
 import com.prototype.restservice.service.SampleService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import spock.lang.Ignore
 import spock.lang.Specification
 
 class AppControllerSpec extends Specification {
@@ -59,5 +60,26 @@ class AppControllerSpec extends Specification {
         response.getStatusCode() == HttpStatus.OK
         response.getBody()[0] == sampleDto1
         response.getBody()[1] == sampleDto2
+    }
+
+    // TODO: fix spec
+    @Ignore
+    def "Test createSample"() {
+        given:
+        Long id = 1L
+        SampleDto sampleDto = new SampleDto(
+                text: "test"
+        )
+
+        when:
+        ResponseEntity<?> response = appController.createSample(sampleDto)
+
+        then:
+        1 * sampleService.addSample(sampleDto) >> id
+        0 * _
+
+        and:
+        response.getStatusCode() == HttpStatus.CREATED
+        response.getHeaders().getLocation().toString() == "samples/id/${id}"
     }
 }
