@@ -15,4 +15,12 @@ public class SampleTransformerImpl implements SampleTransformer {
         sampleDto.setText(sample.getText());
         return sampleDto;
     }
+
+    @Override
+    public Sample transformDto(final SampleDto sampleDto) {
+        Sample sample = new Sample();
+        sample.setId(sampleDto.getId());
+        sample.setText(sampleDto.getText());
+        return sample;
+    }
 }

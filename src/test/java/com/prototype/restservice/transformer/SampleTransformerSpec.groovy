@@ -26,4 +26,22 @@ class SampleTransformerSpec extends Specification {
         sampleDto.id == sample.id
         sampleDto.text == sample.text
     }
+
+    def "Test transformDto"() {
+        given:
+        SampleDto sampleDto = new SampleDto(
+                id: 1L,
+                text: "test"
+        )
+
+        when:
+        Sample sample = sampleTransformer.transformDto(sampleDto)
+
+        then:
+        0 * _
+
+        and:
+        sample.id == sampleDto.id
+        sample.text == sampleDto.text
+    }
 }

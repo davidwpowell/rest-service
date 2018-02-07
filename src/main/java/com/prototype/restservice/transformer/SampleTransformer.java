@@ -12,4 +12,12 @@ public interface SampleTransformer {
      * @return a sample DTO
      */
     SampleDto transform(Sample sample);
+
+    /**
+     * Transforms a sample DTO to a sample.
+     *
+     * @param sampleDto a sample DTO
+     * @return a sample
+     */
+    Sample transformDto(SampleDto sampleDto);
 }
