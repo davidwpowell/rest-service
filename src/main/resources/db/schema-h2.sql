@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS sample;
 
 CREATE TABLE IF NOT EXISTS sample (
-    id      INTEGER PRIMARY KEY,
+    id      BIGINT AUTO_INCREMENT,
     text    VARCHAR(64)
 );
