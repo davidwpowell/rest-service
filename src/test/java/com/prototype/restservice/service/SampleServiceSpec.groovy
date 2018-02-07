@@ -12,8 +12,8 @@ class SampleServiceSpec extends Specification {
     SampleRepository sampleRepository = Mock(SampleRepository)
     SampleTransformer sampleTransformer = Mock(SampleTransformer)
     SampleService sampleService = new SampleServiceImpl(
-            sampleRepository: sampleRepository,
-            sampleTransformer: sampleTransformer
+            sampleRepository,
+            sampleTransformer
     )
 
     def "Test getSample"() {

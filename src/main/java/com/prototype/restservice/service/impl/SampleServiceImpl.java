@@ -14,10 +14,14 @@ import java.util.stream.Collectors;
 @Service
 public class SampleServiceImpl implements SampleService {
 
+    private final SampleRepository sampleRepository;
+    private final SampleTransformer sampleTransformer;
+
     @Autowired
-    private SampleRepository sampleRepository;
-    @Autowired
-    private SampleTransformer sampleTransformer;
+    public SampleServiceImpl(SampleRepository sampleRepository, SampleTransformer sampleTransformer) {
+        this.sampleRepository = sampleRepository;
+        this.sampleTransformer = sampleTransformer;
+    }
 
     @Override
     public SampleDto getSample(final Long id) {
@@ -29,7 +33,7 @@ public class SampleServiceImpl implements SampleService {
     public List<SampleDto> getAllSamples() {
         List<Sample> samples = sampleRepository.findAll();
         List<SampleDto> sampleDtos = samples.stream()
-                .map((s) -> sampleTransformer.transform(s))
+                .map(sampleTransformer::transform)
                 .collect(Collectors.toList());
         return sampleDtos;
     }

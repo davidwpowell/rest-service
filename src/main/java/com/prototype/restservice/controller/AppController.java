@@ -17,8 +17,12 @@ import java.util.List;
 @RestController
 public class AppController {
 
+    private final SampleService sampleService;
+
     @Autowired
-    private SampleService sampleService;
+    public AppController(SampleService sampleService) {
+        this.sampleService = sampleService;
+    }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity<String> index() {

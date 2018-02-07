@@ -11,7 +11,7 @@ class AppControllerSpec extends Specification {
 
     SampleService sampleService = Mock(SampleService)
     AppController appController = new AppController(
-            sampleService: sampleService
+            sampleService
     )
 
     def "Test index"() {
