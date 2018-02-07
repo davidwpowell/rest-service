@@ -33,4 +33,11 @@ public class SampleServiceImpl implements SampleService {
                 .collect(Collectors.toList());
         return sampleDtos;
     }
+
+    @Override
+    public Long addSample(final SampleDto sampleDto) {
+        Sample sample = sampleTransformer.transformDto(sampleDto);
+        Sample sampleAdded = sampleRepository.save(sample);
+        return sampleTransformer.transform(sampleAdded).getId();
+    }
 }

@@ -20,4 +20,12 @@ public interface SampleService {
      * @return a list of sample DTOs
      */
     List<SampleDto> getAllSamples();
+
+    /**
+     * Creates a new sample record.
+     *
+     * @param sampleDto a sample DTO
+     * @return a generated sample id
+     */
+    Long addSample(SampleDto sampleDto);
 }

@@ -78,4 +78,36 @@ class SampleServiceSpec extends Specification {
         sampleDtos[1].id == sample2.id
         sampleDtos[1].text == sample2.text
     }
+
+    def "Test addSample"() {
+        given:
+        Long id = 1L
+        String text = "test"
+        SampleDto sampleDto = new SampleDto(
+                text: text
+        )
+        Sample sample = new Sample(
+                text: text
+        )
+        Sample sampleAdded = new Sample(
+                id: id,
+                text: text
+        )
+        SampleDto sampleDtoAdded = new SampleDto(
+                id: id,
+                text: text
+        )
+
+        when:
+        Long sampleID = sampleService.addSample(sampleDto)
+
+        then:
+        1 * sampleTransformer.transformDto(sampleDto) >> sample
+        1 * sampleRepository.save(sample) >> sampleAdded
+        1 * sampleTransformer.transform(sampleAdded) >> sampleDtoAdded
+        0 * _
+
+        and:
+        sampleID == id
+    }
 }
