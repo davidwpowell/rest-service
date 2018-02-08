@@ -30,6 +30,14 @@ public interface SampleService {
     Long addSample(SampleDto sampleDto);
 
     /**
+     * Updates a sample record.
+     *
+     * @param id a sample ID
+     * @param sampleDto a sample DTO
+     */
+    void updateSample(Long id, SampleDto sampleDto);
+
+    /**
      * Deletes a sample record.
      *
      * @param id a sample ID

@@ -48,6 +48,12 @@ public class AppController {
         return ResponseEntity.created(location).build();
     }
 
+    @RequestMapping(value = "/samples/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<?> updateSample(@PathVariable String id, @RequestBody SampleDto sampleDto) {
+        sampleService.updateSample(Long.valueOf(id), sampleDto);
+        return ResponseEntity.noContent().build();
+    }
+
     @RequestMapping(value = "/samples/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteSample(@PathVariable String id) {
         sampleService.deleteSample(Long.valueOf(id));

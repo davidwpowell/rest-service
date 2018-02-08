@@ -83,6 +83,24 @@ class AppControllerSpec extends Specification {
         response.getHeaders().getLocation().toString() == "samples/id/${id}"
     }
 
+    def "Test updateSample"() {
+        given:
+        String id = "1"
+        SampleDto sampleDto = new SampleDto(
+                text: "test"
+        )
+
+        when:
+        ResponseEntity<?> response = appController.updateSample(id, sampleDto)
+
+        then:
+        1 * sampleService.updateSample(Long.valueOf(id), sampleDto)
+        0 * _
+
+        and:
+        response.getStatusCode() == HttpStatus.NO_CONTENT
+    }
+
     def "Test deleteSample"() {
         given:
         String id = "1"

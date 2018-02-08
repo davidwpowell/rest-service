@@ -106,6 +106,27 @@ class SampleServiceSpec extends Specification {
         sampleID == id
     }
 
+    def "Test updateSample"() {
+        given:
+        Long id = 1L
+        String text = "test"
+        SampleDto sampleDto = new SampleDto(
+                text: text
+        )
+        Sample sample = new Sample(
+                id: id,
+                text: text
+        )
+
+        when:
+        sampleService.updateSample(id, sampleDto)
+
+        then:
+        1 * sampleRepository.findOne(id) >> sample
+        1 * sampleRepository.save(sample)
+        0 * _
+    }
+
     def "Test deleteSample"() {
         given:
         Long id = 1L

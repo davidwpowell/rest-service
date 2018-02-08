@@ -46,6 +46,13 @@ public class SampleServiceImpl implements SampleService {
     }
 
     @Override
+    public void updateSample(final Long id, final SampleDto sampleDto) {
+        Sample sample = sampleRepository.findOne(id);
+        sample.setText(sampleDto.getText());
+        sampleRepository.save(sample);
+    }
+
+    @Override
     public void deleteSample(final Long id) {
         sampleRepository.delete(id);
     }
