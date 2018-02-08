@@ -47,4 +47,10 @@ public class AppController {
                 .buildAndExpand(id).toUri();
         return ResponseEntity.created(location).build();
     }
+
+    @RequestMapping(value = "/samples/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteSample(@PathVariable String id) {
+        sampleService.deleteSample(Long.valueOf(id));
+        return ResponseEntity.noContent().build();
+    }
 }

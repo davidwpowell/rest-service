@@ -44,4 +44,9 @@ public class SampleServiceImpl implements SampleService {
         Sample sampleAdded = sampleRepository.save(sample);
         return sampleTransformer.transform(sampleAdded).getId();
     }
+
+    @Override
+    public void deleteSample(final Long id) {
+        sampleRepository.delete(id);
+    }
 }

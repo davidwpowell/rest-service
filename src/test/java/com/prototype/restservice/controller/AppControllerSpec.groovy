@@ -82,4 +82,19 @@ class AppControllerSpec extends Specification {
         response.getStatusCode() == HttpStatus.CREATED
         response.getHeaders().getLocation().toString() == "samples/id/${id}"
     }
+
+    def "Test deleteSample"() {
+        given:
+        String id = "1"
+
+        when:
+        ResponseEntity<?> response = appController.deleteSample(id)
+
+        then:
+        1 * sampleService.deleteSample(Long.valueOf(id))
+        0 * _
+
+        and:
+        response.getStatusCode() == HttpStatus.NO_CONTENT
+    }
 }

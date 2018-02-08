@@ -110,4 +110,16 @@ class SampleServiceSpec extends Specification {
         and:
         sampleID == id
     }
+
+    def "Test deleteSample"() {
+        given:
+        Long id = 1L
+
+        when:
+        sampleService.deleteSample(id)
+
+        then:
+        1 * sampleRepository.delete(id)
+        0 * _
+    }
 }

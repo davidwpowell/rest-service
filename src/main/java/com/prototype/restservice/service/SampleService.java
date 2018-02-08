@@ -9,7 +9,7 @@ public interface SampleService {
     /**
      * Returns a sample record.
      *
-     * @param id a sample id
+     * @param id a sample ID
      * @return a sample DTO
      */
     SampleDto getSample(Long id);
@@ -25,7 +25,14 @@ public interface SampleService {
      * Creates a new sample record.
      *
      * @param sampleDto a sample DTO
-     * @return a generated sample id
+     * @return a generated sample ID
      */
     Long addSample(SampleDto sampleDto);
+
+    /**
+     * Deletes a sample record.
+     *
+     * @param id a sample ID
+     */
+    void deleteSample(Long id);
 }
