@@ -93,10 +93,6 @@ class SampleServiceSpec extends Specification {
                 id: id,
                 text: text
         )
-        SampleDto sampleDtoAdded = new SampleDto(
-                id: id,
-                text: text
-        )
 
         when:
         Long sampleID = sampleService.addSample(sampleDto)
@@ -104,7 +100,6 @@ class SampleServiceSpec extends Specification {
         then:
         1 * sampleTransformer.transformDto(sampleDto) >> sample
         1 * sampleRepository.save(sample) >> sampleAdded
-        1 * sampleTransformer.transform(sampleAdded) >> sampleDtoAdded
         0 * _
 
         and:

@@ -42,7 +42,7 @@ public class SampleServiceImpl implements SampleService {
     public Long addSample(final SampleDto sampleDto) {
         Sample sample = sampleTransformer.transformDto(sampleDto);
         Sample sampleAdded = sampleRepository.save(sample);
-        return sampleTransformer.transform(sampleAdded).getId();
+        return sampleAdded.getId();
     }
 
     @Override
