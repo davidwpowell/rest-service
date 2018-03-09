@@ -40,7 +40,7 @@ public class AppController {
     }
 
     @RequestMapping(value = "/samples", method = RequestMethod.POST)
-    public ResponseEntity<?> createSample(@RequestBody SampleDto sampleDto) {
+    public ResponseEntity<String> createSample(@RequestBody SampleDto sampleDto) {
         Long id = sampleService.addSample(sampleDto);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest().path("/{id}")
@@ -49,13 +49,13 @@ public class AppController {
     }
 
     @RequestMapping(value = "/samples/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<?> updateSample(@PathVariable String id, @RequestBody SampleDto sampleDto) {
+    public ResponseEntity<String> updateSample(@PathVariable String id, @RequestBody SampleDto sampleDto) {
         sampleService.updateSample(Long.valueOf(id), sampleDto);
         return ResponseEntity.noContent().build();
     }
 
     @RequestMapping(value = "/samples/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteSample(@PathVariable String id) {
+    public ResponseEntity<String> deleteSample(@PathVariable String id) {
         sampleService.deleteSample(Long.valueOf(id));
         return ResponseEntity.noContent().build();
     }
