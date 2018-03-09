@@ -32,10 +32,9 @@ public class SampleServiceImpl implements SampleService {
     @Override
     public List<SampleDto> getAllSamples() {
         List<Sample> samples = sampleRepository.findAll();
-        List<SampleDto> sampleDtos = samples.stream()
+        return samples.stream()
                 .map(sampleTransformer::transform)
                 .collect(Collectors.toList());
-        return sampleDtos;
     }
 
     @Override
