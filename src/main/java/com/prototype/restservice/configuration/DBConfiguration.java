@@ -12,8 +12,8 @@ import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 @Configuration
 public class DBConfiguration {
 
-    private final static String SCHEMA = "db/schema-h2.sql";
-    private final static String DATA = "db/data-h2.sql";
+    private static final String SCHEMA = "db/schema-h2.sql";
+    private static final String DATA = "db/data-h2.sql";
 
     @Bean(name = "dataSource")
     public DriverManagerDataSource dataSource() {
