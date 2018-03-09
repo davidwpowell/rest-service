@@ -16,8 +16,7 @@ cache:
     - '$HOME/.sonar/cache'
 deploy:
   provider: heroku
-  api_key:
-    secure: 0b/M5/VPIOkk3niz9QD23YhM/bszzNuaG48RbKUQbZaE8aqh5ugSCIjzEhd4Y/S0jPiJ0EfuPQwB+NVrTl753NbOzNurMfug4zIuBsLOSqRlRRhwOhYg7viG1ahc8D3/KlR7UlLJc8VbzeGjdmBXlHcTNk3KVzuSVrtBce+hmBtm1dVxhC9gI4/6yDYdsv9LMAOwTYTtbP8a1dFHaRXBjaAcNslIoaF1Pa51s+yswEE4h+WfKvzVNw0mf5359Ff4CWneYef/2Q+QtmoPXoY9UmJoqJHKC1WrOGhlaWcvz8NC1fk4h/mwH505Bt+Zlm7BBl34E28Q6x4+1IxJcJem/2JXkt5EYp8BkRT8dxY0WRhVfvVFfydD0Bmz1XBfQGTFnPZRk7VpIo9vgxQefTAjNI+P7pnBgPf47JLHZiFfslQHQCA9zR9E9UCCCyUjkIQtWUABgKod7MksoaDIWor9QfIZzfCfUhRe7L4XKlcWdljt2i6ShSGQixkYEbzVmU3MZDQyyLzOS5A7B7rDA/ambn4BWTdA2M4s+ZEo0R5vBaeXu6pn15VCnE2Rl1W281yCM4n57QBuKq9nAnzgkMWIPNRp7CRytSEOhbp7qPhZmYoGJsns6OoMI0xTRGX84pioeGPGDYKDc9eOWubYcojvAhFEwyVBBJx0FQ36R3a29Qk=
+  api_key: $HEROKU_TOKEN
   app: frozen-lake-89585
   on:
     repo: davidwpowell/rest-service
