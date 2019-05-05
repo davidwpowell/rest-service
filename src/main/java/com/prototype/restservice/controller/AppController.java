@@ -4,10 +4,12 @@ import com.prototype.restservice.model.SampleDto;
 import com.prototype.restservice.service.SampleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -24,22 +26,22 @@ public class AppController {
         this.sampleService = sampleService;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @GetMapping(value = "/")
     public ResponseEntity<String> index() {
         return ResponseEntity.ok("ALIVE");
     }
 
-    @RequestMapping(value = "/samples/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/samples/{id}")
     public ResponseEntity<SampleDto> getSample(@PathVariable String id) {
         return ResponseEntity.ok(sampleService.getSample(Long.valueOf(id)));
     }
 
-    @RequestMapping(value = "/samples", method = RequestMethod.GET)
+    @GetMapping(value = "/samples")
     public ResponseEntity<List<SampleDto>> getAllSamples() {
         return ResponseEntity.ok(sampleService.getAllSamples());
     }
 
-    @RequestMapping(value = "/samples", method = RequestMethod.POST)
+    @PostMapping(value = "/samples")
     public ResponseEntity<String> createSample(@RequestBody SampleDto sampleDto) {
         Long id = sampleService.addSample(sampleDto);
         URI location = ServletUriComponentsBuilder
@@ -48,13 +50,13 @@ public class AppController {
         return ResponseEntity.created(location).build();
     }
 
-    @RequestMapping(value = "/samples/{id}", method = RequestMethod.PUT)
+    @PutMapping(value = "/samples/{id}")
     public ResponseEntity<String> updateSample(@PathVariable String id, @RequestBody SampleDto sampleDto) {
         sampleService.updateSample(Long.valueOf(id), sampleDto);
         return ResponseEntity.noContent().build();
     }
 
-    @RequestMapping(value = "/samples/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/samples/{id}")
     public ResponseEntity<String> deleteSample(@PathVariable String id) {
         sampleService.deleteSample(Long.valueOf(id));
         return ResponseEntity.noContent().build();
